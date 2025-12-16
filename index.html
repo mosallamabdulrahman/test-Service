@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Study - Full Service Page Layout</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* تعريف الألوان والتأثيرات المخصصة مع !important لضمان التجاوز */
+        
+        .orange-primary {
+            background-color: #f97316 !important; /* Orange-600 */
+        }
+        .text-orange-primary {
+            color: #ea580c !important; /* Orange-700 */
+        }
+        .border-orange-primary {
+            border-color: #ea580c !important;
+        }
+        .dark-section {
+            background-color: #1a202c !important; /* Dark Charcoal/Navy */
+        }
+        /* تحديد اللون الأبيض بشكل صريح مع !important */
+        .bg-white-important {
+            background-color: #ffffff !important;
+        }
+        .text-white-important {
+            color: #ffffff !important;
+        }
+        
+        /* أنماط العناصر التفاعلية والحدود */
+        .focus\:ring-orange-primary:focus {
+            --tw-ring-color: #f97316 !important;
+        }
+        .focus\:border-orange-primary:focus {
+            border-color: #f97316 !important;
+        }
+
+        /* تأثيرات الانتقال والحركة للبطاقات */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .icon-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .icon-list i {
+            margin-top: 4px;
+            flex-shrink: 0;
+            width: 16px;
+        }
+
+        /* Animation for the popup entrance */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 20px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        .scale-100 {
+            transform: scale(1);
+        }
+
+        /* إخفاء النموذج افتراضياً */
+        #marketStudyFormPopup {
+            display: none;
+        }
+    </style>
+    
+    <script>
+        // دالة لفتح وإغلاق النموذج المنبثق
+        function togglePopup(show) {
+            const popup = document.getElementById('marketStudyFormPopup');
+            if (show) {
+                popup.style.display = 'flex';
+                // تأخير بسيط لتطبيق الحركة
+                setTimeout(() => popup.classList.remove('opacity-0'), 10);
+            } else {
+                popup.classList.add('opacity-0');
+                setTimeout(() => popup.style.display = 'none', 300); // إخفاء بعد انتهاء الحركة
+            }
+        }
+    </script>
+</head>
+<body class="bg-white font-sans">
+
+    <section class="bg-gray-50 py-8 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-chart-line text-3xl text-orange-primary mb-2"></i>
+                    <p class="text-gray-800 font-bold text-base">Gain Actionable Market Insights</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-dollar-sign text-3xl text-orange-primary mb-2"></i>
+                    <p class="text-gray-800 font-bold text-base">Reduce Procurement Costs</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-lightbulb text-3xl text-orange-primary mb-2"></i>
+                    <p class="text-gray-800 font-bold text-base">Make Smarter Sourcing Decisions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white-important">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="lg:order-1">
+                    <h2 class="text-4xl font-extrabold text-gray-900 mb-4">Market Study</h2>
+                    <h3 class="text-xl font-bold text-orange-primary mb-6">Gain Actionable Market Insights. Reduce Procurement Costs. Make Smarter Sourcing Decisions.</h3>
+                    <p class="text-lg text-gray-700 mb-6 border-l-4 border-orange-primary pl-4 italic leading-relaxed">
+                        "We provide comprehensive market studies that help your business make informed sourcing and procurement decisions. Our service is designed to uncover market dynamics, pricing trends, supplier capabilities, and cost-saving opportunities, giving you a strategic advantage in procurement."
+                    </p>
+                </div>
+
+                <div class="lg:order-2">
+                    <div class="bg-gray-100 p-10 rounded-xl shadow-2xl flex flex-col justify-center items-center h-full text-center border-b-4 border-orange-primary">
+                        <i class="fas fa-rocket text-7xl text-orange-primary mb-4 transform hover:scale-105 transition duration-500"></i>
+                        <p class="text-gray-800 font-extrabold text-xl">Unlock Your Strategic Advantage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-16">Our Market Study Services Include</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="bg-white-important p-6 rounded-xl shadow-xl card-hover border-t-4 border-orange-primary">
+                    <i class="fas fa-map-marked-alt text-3xl text-orange-primary mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Supply Market Mapping & Trend Analysis</h3>
+                    <ul class="text-gray-700 space-y-3 text-sm icon-list">
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Identify key players, market share, and competitive landscape.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Track pricing trends and emerging market shifts.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Forecast future supply and demand patterns to plan sourcing strategies effectively.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white-important p-6 rounded-xl shadow-xl card-hover border-t-4 border-orange-primary">
+                    <i class="fas fa-hand-holding-usd text-3xl text-orange-primary mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cost Optimization & Low-Cost Sourcing</h3>
+                    <ul class="text-gray-700 space-y-3 text-sm icon-list">
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Benchmark costs across suppliers and regions.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Identify opportunities to negotiate better pricing.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Recommend alternative suppliers or sourcing strategies to minimize procurement costs.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white-important p-6 rounded-xl shadow-xl card-hover border-t-4 border-orange-primary">
+                    <i class="fas fa-shield-alt text-3xl text-orange-primary mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Supplier Performance & Risk Assessment</h3>
+                    <ul class="text-gray-700 space-y-3 text-sm icon-list">
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Evaluate supplier reliability, delivery performance, and quality standards.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Assess financial stability and risk factors of potential suppliers.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Provide actionable recommendations to reduce supply chain risks.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white-important p-6 rounded-xl shadow-xl card-hover border-t-4 border-orange-primary">
+                    <i class="fas fa-brain text-3xl text-orange-primary mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Strategic Procurement Intelligence</h3>
+                    <ul class="text-gray-700 space-y-3 text-sm icon-list">
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Deliver insights that help prioritize sourcing efforts and investments.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Analyze total cost of ownership (TCO) for better decision-making.</li>
+                        <li><i class="fas fa-check-circle text-orange-primary mr-2"></i> Support supplier selection, contract negotiations, and long-term procurement planning.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 dark-section text-white-important">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-3xl font-extrabold mb-4">Ready to Transform Your Sourcing Strategy?</h3>
+            <p class="text-lg mb-8 text-gray-300">We provide the insights you need to achieve tangible results.</p>
+            <div class="space-x-6">
+                <button class="orange-primary hover:bg-orange-600 text-white-important font-bold py-3 px-8 rounded-lg transition duration-300 shadow-2xl transform hover:scale-105"
+                        onclick="togglePopup(true)">
+                    Request Your Market Study
+                </button>
+                <button class="bg-white-important hover:bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-lg transition duration-300 border border-gray-300 transform hover:scale-105" 
+                        onclick="togglePopup(true)">
+                    Buy Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white-important">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 text-center mb-16">Why Choose Our Market Study Service</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                
+                <div class="p-6 card-hover border-b-4 border-orange-primary">
+                    <i class="fas fa-database text-4xl text-orange-primary mx-auto mb-4"></i>
+                    <h3 class="text-xl font-extrabold text-gray-900 mb-2">Data-Driven Decisions</h3>
+                    <p class="text-gray-600">Our insights are backed by real market data, not assumptions.</p>
+                </div>
+
+                <div class="p-6 card-hover border-b-4 border-orange-primary">
+                    <i class="fas fa-money-bill-wave text-4xl text-orange-primary mx-auto mb-4"></i>
+                    <h3 class="text-xl font-extrabold text-gray-900 mb-2">Cost Savings</h3>
+                    <p class="text-gray-600">Identify and implement strategies to reduce procurement expenses.</p>
+                </div>
+
+                <div class="p-6 card-hover border-b-4 border-orange-primary">
+                    <i class="fas fa-lock text-4xl text-orange-primary mx-auto mb-4"></i>
+                    <h3 class="text-xl font-extrabold text-gray-900 mb-2">Risk Mitigation</h3>
+                    <p class="text-gray-600">Minimize supply chain risks with thorough supplier assessments.</p>
+                </div>
+
+                <div class="p-6 card-hover border-b-4 border-orange-primary">
+                    <i class="fas fa-trophy text-4xl text-orange-primary mx-auto mb-4"></i>
+                    <h3 class="text-xl font-extrabold text-gray-900 mb-2">Competitive Advantage</h3>
+                    <p class="text-gray-600">Make smarter, faster, and more strategic sourcing decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 orange-primary text-white-important">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-extrabold mb-4">Get Started Today</h2>
+            <p class="text-xl mb-12 text-white/90">Unlock the potential of your procurement process with a tailored market study.</p>
+            
+            <div class="space-x-6 mb-10">
+                <button class="bg-gray-800 hover:bg-gray-700 text-white-important font-bold py-3 px-8 rounded-lg transition duration-300 shadow-xl transform hover:scale-105"
+                        onclick="togglePopup(true)">
+                    Request Your Market Study
+                </button>
+                <button class="bg-white-important hover:bg-gray-200 text-orange-primary font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105"
+                        onclick="togglePopup(true)">
+                    Buy Now
+                </button>
+            </div>
+            
+            <div class="text-sm opacity-90 border-t border-white/30 pt-4 max-w-lg mx-auto">
+                <p>Note: Clicking these buttons will trigger the Contact Us / Buy Now Form Popup.</p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-70 flex justify-center items-center z-50 p-4 opacity-0 transition duration-300" 
+         id="marketStudyFormPopup" style="display: none;">
+        
+        <div class="bg-white-important rounded-xl shadow-2xl max-w-lg w-full relative transform transition duration-300 ease-in-out scale-100 card-hover" style="animation: fadeInUp 0.5s;">
+            
+            <div class="p-6 orange-primary rounded-t-xl text-white-important text-center relative">
+                <h3 class="text-2xl font-extrabold mb-1">Secure Your Market Study</h3>
+                <p class="text-sm opacity-90">Please provide your details to initiate the consultation process.</p>
+                
+                <button class="absolute top-4 right-4 text-white-important hover:text-gray-200 transition duration-200" onclick="togglePopup(false)">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form class="p-8 space-y-6">
+                
+                <div>
+                    <label for="full_name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" placeholder="John Doe" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-primary focus:border-orange-primary transition duration-200">
+                </div>
+
+                <div>
+                    <label for="company_name" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                    <input type="text" id="company_name" name="company_name" placeholder="Acme Consulting" required
+                           class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-primary focus:border-orange-primary transition duration-200">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 555 123 4567"
+                               class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-primary focus:border-orange-primary transition duration-200">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Work Email</label>
+                        <input type="email" id="email" name="email" placeholder="work@example.com" required
+                               class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-primary focus:border-orange-primary transition duration-200">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Project Details (Optional)</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Briefly describe your procurement challenge or market focus..."
+                              class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-orange-primary focus:border-orange-primary transition duration-200"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit"
+                            class="w-full py-3 px-4 orange-primary hover:bg-orange-600 text-white-important font-extrabold rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                        Submit Request
+                    </button>
+                </div>
+                
+                <p class="text-xs text-center text-gray-500 mt-4">We will contact you within 24 hours.</p>
+
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
